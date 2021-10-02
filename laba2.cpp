@@ -1,15 +1,12 @@
-﻿#include <iostream>
+#include <iostream>
 #include <ctime>
 using namespace std;
-
-int main()
-{
-
-    int size, l, u, n, s, p, g, t;
+int main(){
+    int size, prev, l, u, n, s, p, g;
     double  x;
-    cout << "Enter size of array (>2): " << endl;
+    cout << "Enter size of array (>2): "<< endl;
     cin >> size;
-    int* arr = new int[size];
+    int *arr = new int[size];
     while (2 > size) {
         cout << "Enter an acceptable value " << endl;
         cin >> size;
@@ -28,9 +25,9 @@ int main()
             arr[i] = (rand() % (u - l + 1) + l);
         }
     }
-    else {
+    else{
         for (int i = 0; i < size; i++) {
-            cin >> arr[i];
+            cin >> arr[i] ;
         }
     };
     n = 0;
@@ -39,7 +36,7 @@ int main()
             n = n + 1;
         }
     }
-    cout << endl << "There is " << n << " positive elements in your array" << endl;
+    cout  << endl << "There is " << n << " positive elements in your array" << endl;
     s = 0;
     p = 0;
     g = 0;
@@ -57,36 +54,55 @@ int main()
             }
         }
     }
-    else {
+    else{
         cout << "There is no zeros in your array" << endl;
     }
     cout << "Your not fxd array:" << endl;
     for (int i = 0; i < size; i++) {
         cout << " " << arr[i] << ",";
     }
-    for (int i = 0; i < size; i++) {
-        if (arr[i] <= 0)
-            continue;
-        for (int j = 0; j < size; j++) {
-            if (arr[j] > arr[j + 1]) {
-                t = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = t;
-            }
+
+    int const_prev = -1;
+    for(int i=0; i<size;i++){
+        if (arr[i]>0){
+            const_prev=i;
+            break;
         }
     }
-    for (int i = 0; i < size; i++) {
-        if (arr[i] >= 0)
-            continue;
-        for (int j = 0; j < size; j++) {
-            if (arr[j] < arr[j + 1]) {
-                t = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = t;
+    for (int i = 0; i < size; i++){
+        prev = const_prev;
+        for (int j = 0; j < size-i; j++) {
+            if (arr[j] <= 0)
+                continue;
+            if (arr[prev] > arr[j]) {
+                int a = arr[prev];
+                arr[prev] = arr[j];
+                arr[j] = a;
             }
+            prev=j;
         }
     }
-    cout << endl <<  "Your fixed array:" << endl;
+
+    int const_pre = -1;
+    for(int i=0; i<size;i++){
+        if (arr[i]<0){
+            const_pre=i;
+            break;}
+    }
+    for (int i = 0; i < size; i++){
+        prev = const_pre;
+        for (int j = 0; j < size-i; j++) {
+            if (arr[j] >= 0)
+                continue;
+            if (arr[prev] < arr[j]) {
+                int a = arr[prev];
+                arr[prev] = arr[j];
+                arr[j] = a;
+            }
+            prev=j;
+        }
+    }
+    cout << "Your fixed array:" << endl;
     for (int i = 0; i < size; i++) {
         cout << " " << arr[i] << ",";
     }
