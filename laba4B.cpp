@@ -37,6 +37,7 @@ int main(){
     vector_of_kords.pop_back();
     int temp_first = 1;
     int temp_last = 304;
+    best_characteristic = 304;
     for (int i = 0; i < (vector_of_kords.size() - 1); i++) {      // ходит по парам кордам
         for (int j = (vector_of_kords[i] + 1); j < vector_of_kords[i + 1]; j++) {         // ходит по буквам с которыми сравнивают
             for (int k = (vector_of_kords[i] + 1); k < vector_of_kords[i + 1]; k++) {        // ходит по буквам которые сравнивают
@@ -54,14 +55,17 @@ int main(){
     }
     cout << endl;
     for (int i = 0; i < (vector_of_characteristics.size() - 1); i++){
-        best_characteristic = min(vector_of_characteristics[i], vector_of_characteristics[i + 1]);
+        best_characteristic = min(min(vector_of_characteristics[i], vector_of_characteristics[i + 1]), best_characteristic);
     }
+   
+
     for (int i = 0; i < vector_of_characteristics.size(); i++) {
         if (vector_of_characteristics[i] == best_characteristic){
             o = i + 1;
             break;
         }
     }
+    
     o = 2 * o;
     cout << "Your word is";
     for (int i = vector_of_kords[o-2]; i < vector_of_kords[o-1]; i++){
