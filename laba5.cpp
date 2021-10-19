@@ -32,6 +32,7 @@ int main() {
 			}
 		}
 		else {
+			exit_file << value_of_repeats << " \n";
 			value_of_repeats = 1;
 			for (int i = 0; i < str_first.length(); i++) {
 				if (str_first[i] < 48 || str_first[i] > 57) {
@@ -46,8 +47,8 @@ int main() {
 		if (str_first.empty())
 			continue;
 		temp_string = str_first;
-		exit_file << " " << value_of_repeats << " \n";
 	}
+
 	enter_file.close();
 	exit_file.close();
 }
