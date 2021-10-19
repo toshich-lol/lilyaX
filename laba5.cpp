@@ -31,33 +31,28 @@ int main() {
 			}
 		}
 		else {
-			if (n > 0){
-				exit_file << value_of_repeats << " \n";
-			}
-			value_of_repeats = 1;
 			for (int i = 0; i < str_first.length(); i++) {
 				if (str_first[i] < 48 || str_first[i] > 57) {
 					str_first.clear();
 					break;
 				}
 			}
+			if (n > 0 && !str_first.empty()){
+				exit_file << value_of_repeats << " \n";
+			}
 			if (!str_first.empty()) {
 				exit_file << str_first << " " << number_of_string << " ";
+				n++;
+				value_of_repeats = 1;
 			}
 		}
-		n++;
+		temp_string = str_first;
 		if (str_first.empty())
 			continue;
-		temp_string = str_first;
 	}
-
+	if (value_of_repeats != 1){
+		exit_file << value_of_repeats << " \n";
+	}
 	enter_file.close();
 	exit_file.close();
 }
-
-
-
-
-
-
-
