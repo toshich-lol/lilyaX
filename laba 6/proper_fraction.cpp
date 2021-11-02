@@ -38,22 +38,21 @@ proper_fraction::proper_fraction(const proper_fraction& copy) {
 	this->denominator = copy.denominator;
 }
 void proper_fraction::print() {
-	double sign = (double)numerator / denominator;
-	if (sign < 0) {
+	if (numerator * denominator < 0){
 		cout << "   " << abs(numerator) << endl << "_ ";
 		for (int i = 0; i < (max(number(abs(numerator)), number(abs(denominator))) + 2); i++) {
 			cout << "_";
 		} cout << endl;
 		cout << "   " << abs(denominator) << endl << endl;
 	}
-	else if (sign > 0) {
+	else if (numerator * denominator > 0) {
 		cout << " " << abs(numerator) << endl;
 		for (int i = 0; i < (max(number(abs(numerator)), number(abs(denominator))) + 2); i++) {
 			cout << "_";
 		} cout << endl;
 		cout << " " << abs(denominator) << endl << endl;
 	}
-	else if (sign == 0) {
+	else if (numerator * denominator == 0) {
 		cout << "0" << endl << endl;
 	}
 }
