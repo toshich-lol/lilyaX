@@ -34,9 +34,9 @@
     <property name="last_opened_file_path" value="$USER_HOME$/CLionProjects/untitled3/main.cpp" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -52,6 +52,9 @@
       <workItem from="1634539533278" duration="39000" />
       <workItem from="1634557273048" duration="399000" />
       <workItem from="1634558833917" duration="549000" />
+      <workItem from="1635407443190" duration="720000" />
+      <workItem from="1635623538141" duration="697000" />
+      <workItem from="1635848440957" duration="81000" />
     </task>
     <servers />
   </component>
