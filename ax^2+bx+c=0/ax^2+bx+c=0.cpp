@@ -12,7 +12,6 @@ int main(){
 	cout << endl << "c = ";
 	cin >> c;
 	desision(a, b, c);
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	run_tests();
 	return 0;
 }
