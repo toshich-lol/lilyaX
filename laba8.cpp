@@ -4,11 +4,6 @@ class Stack {
     int size;
     int* array = new int[size];
     int top;
-public:
-    Stack() : size(0), top(-1) {}
-    bool IsEmpty() {
-        return !size;
-    }
     void resize(int a) {
         size += a;
         top += a;
@@ -19,6 +14,12 @@ public:
         delete[] array;
         array = NewArray;
     }
+public:
+    Stack() : size(0), top(-1) {}
+    bool IsEmpty() {
+        return !size;
+    }
+
     void operator << (int value) {
         resize(1);
         array[top] = value;
