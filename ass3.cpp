@@ -17,13 +17,13 @@ int main(){
 
         std::cin >> a;
 
-        __asm {
+        __asm{
             mov EAX, a
             mul EAX
             mul EAX
-            mov ECX, EAX; //4
+            mov ECX, EAX
             mul ECX
-            mov EBX, EAX //8
+            mov EBX, EAX
             mul ECX
 
             add EAX, EBX
@@ -38,11 +38,26 @@ int main(){
         break;
     case 2:
 
-         __asm {
-           
-         }
+        int solutions[16];
 
-        std::cout << "ASS result: "<< std::endl;
+        __asm {
+            mov EAX, 1
+            mov EBX, 16
+            xor ECX, ECX
+        start_:
+            mov [solutions + 4 * ECX], EAX
+            inc ECX
+            mov [solutions + 4 * ECX], EBX
+            inc ECX
+            add EAX, 3
+            sub EBX, 2
+            cmp EBX, 0 
+            jg start_
+        }
+
+        for (int i = 0; i < 16; i+=2){
+             std::cout << solutions[i] << " and " << solutions[i + 1] << std::endl;
+        }
         break;
     case 3:
 
