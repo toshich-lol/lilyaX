@@ -5,7 +5,7 @@ int main()
 {
 
     __int32  iteration(0), one(1), x(0), NF(0), two(2);
-    double a(0.5), intermediat_rez(0), intermediat_rez3(0), rez(0), epsilon(0);
+    double a(0.5), intermediat_rez(0), intermediat_rezult(0), rez(0), epsilon(0);
 
     int number;
 
@@ -24,10 +24,9 @@ int main()
 
         break;
     case 2:
-        int b;
             std::cout << "Enter required ouccuracy(5, 7 or 9)\n";
-            std::cin >> b;
-            switch (b) {
+            std::cin >> x;
+            switch (x) {
             case 5:
                 epsilon = 0.000001;
                 break;
@@ -91,12 +90,11 @@ int main()
 
             std::cout << "It needs " << iteration << " of iteration to get this epsilon\n";
 
-            std::cout << std::setprecision(15) << "Our PI = " << rez << ", PI = 3,141592653\n";
+            std::cout << std::setprecision(15) << "Our PI = " << rez << ", PI = 3.141592653\n";
 
         break;
     case 3:
 
-      
         std::cout << "Enter required epsilon (2, 3 or 4)\n";
         std::cin >> x;
         switch (x) {
@@ -134,13 +132,13 @@ int main()
 
                 fld one
                 fdiv x
-                fadd intermidiate_rez3
-                fstp intermidiate_rez3
+                fadd intermediat_rezult
+                fstp intermediat_rezult
 
 
 
                 fild one
-                fadd intermidiate_rez3
+                fadd intermediat_rezult
                 fidiv two
                 fst rez
 
@@ -155,7 +153,7 @@ int main()
 
         std::cout << "It needs " << iteration << " of itertion to get this epsilon\n";
 
-        std::cout << "Our ln2 = " << std::setprecision(10) << rez << " ln2 = 0,69314718\n";
+        std::cout << "Our ln2 = " << std::setprecision(10) << rez << " ln2 = 0.69314718\n";
 
         break;
     case 5:
@@ -166,9 +164,9 @@ int main()
             fild x
             fld a
             FYL2X
-            fld one
+            fild one
             FSCALE
-            fstp a
+            fst a
         }
 
         std::cout << a << std::endl;
