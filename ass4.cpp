@@ -4,8 +4,8 @@
 int main()
 {
 
-    __int32  iteration(0), one(1), x(0), NF(0), two(2);
-    double a(0.5), intermediat_rez(0), intermediat_rezult(0), rez(0), epsilon(0);
+    __int32  iteration(0), one(1), y(0), NF(0), two(2), noRoots(0);
+    double a(0.5), b(0), c(0), x(0), intermediate(0), intermediate_rez(0), intermediate_rezult(0), rez(0), epsilon(0), root(0), higher_boder(10), lower_boder(-10), middle(0), zero(0);
 
     int number;
 
@@ -15,18 +15,161 @@ int main()
 
     switch (number) {
     case 1:
-        std::cout << "Enter x\n";;
+
+        std::cout << "Enter a, b and c\n";
+        std::cin >> a >> b >> c;
         __asm {
 
+        counting:
+                finit
+                fld higher_boder
+                fst x
+
+                fmul x
+                fmul x
+                fstp intermediate_rezult
+                fld x
+                fmul x
+                fmul a
+                fadd intermediate_rezult
+                fstp intermediate_rezult
+                fld x
+                fmul b
+                fadd intermediate_rezult
+                fadd c
+                fst intermediate_rezult
+
+
+
+                fcom zero
+                fstsw ax
+                sahf
+                je is_root
+
+
+
+
+                fld lower_boder
+                fst x
+
+                fmul x
+                fmul x
+                fstp intermediate_rezult
+                fld x
+                fmul x
+                fmul a
+                fadd intermediate_rezult
+                fstp intermediate_rezult
+                fld x
+                fmul b
+                fadd intermediate_rezult
+                fadd c
+                fst intermediate_rezult
+
+
+
+                fcom zero
+                fstsw ax
+                sahf
+                je is_root
+
+
+                fmul ST, ST(1)
+                fst root
+                fcom zero
+                fstsw ax
+                sahf
+                ja no_roots
+
+
+
+                fld higher_boder
+                fadd lower_boder
+                fidiv two
+                fst middle
+                fst x
+
+                fmul x
+                fmul x
+                fstp intermediate_rezult
+                fld x
+                fmul x
+                fmul a
+                fadd intermediate_rezult
+                fstp intermediate_rezult
+                fld x
+                fmul b
+                fadd intermediate_rezult
+                fadd c
+                fst intermediate_rezult
+
+
+
+
+
+                fcom zero
+                fstsw ax
+                sahf
+                je is_root
+
+                fld intermediate_rezult
+
+                fcom zero
+                fstsw ax
+                sahf
+                ja change_higher_boder
+
+
+                fld intermediate_rezult
+
+                fcom zero
+                fstsw ax
+                sahf
+                jb change_lower_boder
+
+
+
+        change_higher_boder:
+
+                fld middle
+                fstp higher_boder
+                jmp counting
+
+
+
+        change_lower_boder:
+
+            fld middle
+            fstp lower_boder
+            jmp counting
+
+
+
+            is_root:
+            fld x
+            fstp root
+            jmp end
+
+        no_roots :
+
+            inc noRoots
+            jmp end
+
+        end :
+
+
         }
-
-        std::cout << "Result: " << std::endl;
-
+        if (noRoots == 1){
+            std::cout << "No roots\n";
+        }
+        else{
+            std::cout << root << std::endl;
+        }
         break;
     case 2:
             std::cout << "Enter required ouccuracy(5, 7 or 9)\n";
-            std::cin >> x;
-            switch (x) {
+            std::cin >> y;
+            switch (y) {
             case 5:
                 epsilon = 0.000001;
                 break;
@@ -49,7 +192,7 @@ int main()
                     inc iteration
                     mov EAX, iteration
                     mul EAX
-                    mov x, EAX
+                    mov y, EAX
                     xor EDX, EDX
                     mov EAX, iteration
                     mov EBX, 2
@@ -60,19 +203,19 @@ int main()
                     pos_ :
 
                 fld one
-                    fdiv x
+                    fdiv y
                     cmp NF, 0
                     je not_neg_
                     dec NF
                     fchs
                     not_neg_ :
-                fadd intermediat_rez
-                    fst intermediat_rez
+                fadd intermediate_rez
+                    fst intermediate_rez
 
 
 
-                    mov x, 12
-                    fimul x
+                    mov y, 12
+                    fimul y
                     fsqrt
                     fst rez
 
@@ -96,8 +239,8 @@ int main()
     case 3:
 
         std::cout << "Enter required epsilon (2, 3 or 4)\n";
-        std::cin >> x;
-        switch (x) {
+        std::cin >> y;
+        switch (y) {
         case 2:
             epsilon = 0.001;
             break;
@@ -127,18 +270,18 @@ int main()
                 sub EAX, 1
                 mov EBX, iteration
                 mul EBX
-                mov x, EAX
+                mov y, EAX
 
 
                 fld one
-                fdiv x
-                fadd intermediat_rezult
-                fstp intermediat_rezult
+                fdiv y
+                fadd intermediate
+                fstp intermediate
 
 
 
                 fild one
-                fadd intermediat_rezult
+                fadd intermediate
                 fidiv two
                 fst rez
 
@@ -157,11 +300,11 @@ int main()
 
         break;
     case 5:
-        std::cout << "Enter x\n";
-        std::cin >> x;
+        std::cout << "Enter y\n";
+        std::cin >> y;
 
         __asm {
-            fild x
+            fild y
             fld a
             FYL2X
             fild one
