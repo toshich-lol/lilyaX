@@ -1,14 +1,10 @@
 #include "column.h"
-#include <QPainter>
-#include <QImage>
-#include <stdlib.h>
-#include <time.h>
-column::column():speed(-2), width(100), space(174)
+
+column::column():speed(-4), width(100), space(174)
 {
 mainPoint.setX(600);
 srand(time(NULL));
-mainPoint.setY(30 + (rand()*200)%740 - space);
-
+mainPoint.setY(100 + (rand()*1234)%426);
 }
 void column::drawColumn(QPainter* painter){
     QImage pipe("D:/qt/labsQT/flappy_bird/sprites/pipe.png");
@@ -19,8 +15,6 @@ void column::drawColumn(QPainter* painter){
     if(this->mainPoint.x() + this->width < 0){
         mainPoint.setX(600);
         srand(time(NULL));
-        mainPoint.setY(30 + (rand()*200)%740 - space);
+        mainPoint.setY(100 + (rand()*123)%426);
     }
 }
-
-
