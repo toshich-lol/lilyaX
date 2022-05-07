@@ -21,6 +21,8 @@ set(PROJECT_SOURCES
         mainwindow.ui
         column.cpp
         column.h
+        bird.h
+        bird.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
